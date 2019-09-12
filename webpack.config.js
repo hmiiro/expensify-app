@@ -8,7 +8,7 @@ module.exports = (env) => {
     return {
             entry: './src/app.js',
             output: {
-                path: path.join(__dirname, 'public'),
+                path: path.join(__dirname, 'public', 'dist'),
                 filename: 'bundle.js'
             },
             module: {
@@ -32,17 +32,17 @@ module.exports = (env) => {
                 }]
             },
             plugins: [
-                //new webpack.IgnorePlugin(/^./locale$/ /moment$/),
                 new MiniCssExtractPlugin({
                     filename: 'styles.css',
-      chunkFilename: 'id.css',
-      ignoreOrder: false, // Enable to remove warnings about conflicting order
-    })
+                    chunkFilename: 'id.css',
+                    ignoreOrder: false, // Enable to remove warnings about conflicting order
+                })
             ],
             devtool: isProduction ? 'source-map' : 'inline-source-map',
             devServer: {
                 contentBase: path.join(__dirname, 'public'),
-                historyApiFallback:true
+                historyApiFallback:true,
+                publicPath: '/dist/'
             }
         };
         // loader
