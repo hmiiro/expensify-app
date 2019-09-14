@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
 import ExpenseListFilters from './ExpenseListFilters';
+import ExpenseSummary from './ExpensesSummary';
 
 const ExpenseList = (props) => (
     <div>
         <h2>Expenses</h2>
+        <ExpenseSummary />
         <ExpenseListFilters />
         {
             props.expenses.length === 0 ? (
